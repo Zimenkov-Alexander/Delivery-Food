@@ -1,0 +1,21 @@
+.rest__info{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 45px;
+}
+.rest__title{
+	font-weight: bold;
+	font-size: 36px;
+}
+.rest__search{
+	min-width: 306px;
+}
+.search--rest{
+	background-image: (url(../img/rest/search.svg));
+}
+.cards{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 60px;
+}
