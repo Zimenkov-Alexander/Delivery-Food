@@ -1,0 +1,32 @@
+.footer{
+	background-color: white;
+}
+.footer__wrapper{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+	min-height: 160px;
+}
+.footer__info, .list{
+	display: flex;
+	align-items: center;
+}
+.footer__logo{
+	margin-right: 30px;
+}
+.list__item{
+	font-size: 18px;
+	color: #595959;
+	&:not(:last-child){
+		margin-right: 15px;
+	}
+}
+.list--social{
+	.list__item{
+		height: 25px;
+		&:not(:last-child){
+			margin-right: 21px;
+		}
+	}
+}
