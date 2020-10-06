@@ -56,6 +56,7 @@ li {
 }
 
 .btn {
+  cursor: pointer;
   padding: 8px 16px 8px 35px;
   font-size: 16px;
   border: 1px solid #D9D9D9;
@@ -135,14 +136,42 @@ li {
 }
 
 .btns--header .btn--user {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
   color: white;
   background-color: #1890FF;
   background-image: url(../img/header/user.svg);
 }
 
+.btns--header .btn--user:hover {
+  background-color: #4da9ff;
+  color: white;
+}
+
+.btns--header .btn--user:active {
+  background-color: #80c1ff;
+}
+
+.btns--header .btn--user:focus {
+  outline-color: #4da9ff;
+}
+
 .btns--header .btn--basket {
   background-color: white;
   background-image: url(../img/header/basket.svg);
+}
+
+.btns--header .btn--basket:hover {
+  background-color: #fafafa;
+}
+
+.btns--header .btn--basket:active {
+  background-color: white;
+}
+
+.btns--header .btn--basket:focus {
+  color: black;
 }
 
 .info__wrapper {
@@ -231,6 +260,7 @@ li {
 .card__image {
   width: 100%;
   margin-bottom: 25px;
+  cursor: pointer;
 }
 
 .card__image img {
@@ -262,6 +292,15 @@ li {
 .card__title {
   font-weight: bold;
   font-size: 24px;
+  cursor: pointer;
+  -webkit-transition: 0.6s;
+  -o-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.card__title:hover {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #000;
 }
 
 .card__time {
@@ -366,6 +405,25 @@ li {
   margin-right: 15px;
 }
 
+.list--nav .list__item {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.list--nav .list__item:hover {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #595959;
+}
+
+.list--nav .list__item:active {
+  border-color: #8c8c8c;
+}
+
+.list--nav .list__item:active a {
+  color: #8c8c8c;
+}
+
 .list--social .list__item {
   height: 25px;
 }
@@ -442,6 +500,7 @@ li {
 
 .basket__close {
   position: absolute;
+  cursor: pointer;
   right: 46px;
   top: 41px;
   width: 25px;

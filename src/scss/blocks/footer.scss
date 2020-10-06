@@ -24,6 +24,22 @@
 		margin-right: 15px;
 	}
 }
+.list--nav{
+	.list__item{
+		transition: 0.3s;
+		&:hover{
+			padding-bottom: 5px;
+			border-bottom: 1px solid #595959;
+		}
+		&:active{
+			border-color: hsl(0, 0%, 55%);
+			a{
+				color: hsl(0, 0%, 55%);
+			}
+		}
+	}
+}
+
 .list--social{
 	.list__item{
 		height: 25px;

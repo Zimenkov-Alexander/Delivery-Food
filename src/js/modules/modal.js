@@ -1,18 +1,40 @@
-const basketBtn = document.querySelector('#basket'),
-	  modalBasket = document.querySelector('.modal--basket'),
-	  modalclose = document.querySelector('#modal__close');
 
-basketBtn.addEventListener('click', () => {
-	modalBasket.classList.remove('hide');
-	modalBasket.classList.add('show');
-	setTimeout(() => {
-		modalBasket.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-	}, 600);
-});
+function modal (modalSelector, openBtnSelector, ...selectorsClose) {
+	
+	const modalOpenBtn = document.querySelector(openBtnSelector),
+		  modal = document.querySelector(modalSelector);
+	
+	if (selectorsClose.length != 0){
 
-modalclose.addEventListener('click', () => {
-	modalBasket.classList.add('hide');
-	modalBasket.classList.remove('show');
-	modalBasket.style.backgroundColor = 'initial';
+		let btnsClose = [];
+		selectorsClose.forEach(item => {
+			const elem = document.querySelector(item);
+			btnsClose.push(elem);
+		});
 
-});
+		btnsClose.forEach(item => {
+			item.addEventListener('click', modalClose);
+		});
+
+	}
+
+	modalOpenBtn.addEventListener('click', modalOpen);
+	
+	function modalOpen () {
+		modal.classList.remove('hide');
+		modal.classList.add('show');
+		setTimeout(() => {
+			modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+		}, 600);
+	}
+	function modalClose () {
+		modal.classList.add('hide');
+		modal.classList.remove('show');
+		modal.style.backgroundColor = 'initial';
+	}
+
+
+}
+modal ('.modal--basket','#basket', '#modal__close', '.btn--canceling');
+
+// export default modal;

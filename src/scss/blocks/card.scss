@@ -10,7 +10,9 @@
 .card__image{
 	width: 100%;
 	margin-bottom: 25px;
+	cursor: pointer;
 	img{
+	
 		width: 100%;
 	}
 }
@@ -28,6 +30,12 @@
 .card__title{
 	font-weight: bold;
 	font-size: 24px;
+	cursor: pointer;
+	transition: 0.6s;
+	&:hover{
+		padding-bottom: 5px;
+		border-bottom: 1px solid #000;
+	}
 }
 .card__time{
 	display: flex;

@@ -18,13 +18,33 @@
 	justify-content: space-between;
 	width: 220px;
 	.btn--user{
+		transition: 0.3s;
 		color: white;
 		background-color: #1890FF;
 		background-image: url(../img/header/user.svg);
+		&:hover{
+			background-color: hsl(209, 100%, 65%);
+			color: white;
+		}
+		&:active{
+			background-color: hsl(209, 100%, 75%)
+		}
+		&:focus{
+			outline-color: hsl(209, 100%, 65%);
+		}
 	}
 	.btn--basket{
 		background-color: white;
 		background-image: url(../img/header/basket.svg);
+		&:hover{
+			background-color: hsl(0, 0%, 98%);
+		}
+		&:active{
+			background-color: hsl(0, 0%, 100%);
+		}
+		&:focus{
+			color: black;
+		}
 	}
 }
 
