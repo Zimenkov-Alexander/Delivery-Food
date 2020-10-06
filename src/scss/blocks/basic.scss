@@ -7,6 +7,10 @@
 body{
 	font-weight: normal;
 	font-style: normal;	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
 }
 a {
 	color: black;
@@ -20,6 +24,7 @@ li{
 	flex-direction: column;
 	min-height: 100vh;
 	max-width: 1440px;
+	min-width: 1440px;
 	margin: 0 auto;
 	background: linear-gradient(180deg, rgba(245, 245, 245, 0) 1.04%, #F5F5F5 100%);
 }
