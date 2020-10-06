@@ -20,7 +20,7 @@
 				</div>
 				<div class="btns btns--header">
 					<button class="btn btn--user">Войти</button>
-					<button class="btn btn--basket">Корзина</button>
+					<button id="basket" class="btn btn--basket">Корзина</button>
 				</div>
 			</div>
 		</header>
@@ -186,8 +186,63 @@
 		</div>
 	</footer>
 	
+	<section class="modal modal--basket hide"> 
+		<div class="basket__wrapper">
+			<div class="basket__info">
+				<h2 class="basket__title">Корзина</h2>
+				<button id="modal__close" class="basket__close"></button>
+			</div>
+			<div class="basket__order">
+				<div class="ordeer__item">
+					<p class="item__name">Ролл угорь стандартный</p>
+					<div class="item__wrapper">
+						<p class="item__prise">250₽</p>
+						<button id="minus" class="btn btn--modal btn--basket">-</button>
+						<p id="sum" class="item__sum">1</p>
+						<button id="plus" class="btn btn--modal btn--basket">+</button>
+					</div>
+				</div>
+				<div class="ordeer__item">
+					<p class="item__name">Ролл угорь стандартный</p>
+					<div class="item__wrapper">
+						<p class="item__prise">250₽</p>
+						<button id="minus" class="btn btn--modal btn--basket">-</button>
+						<p id="sum" class="item__sum">1</p>
+						<button id="plus" class="btn btn--modal btn--basket">+</button>
+					</div>
+				</div>
+				<div class="ordeer__item">
+					<p class="item__name">Ролл угорь стандартный</p>
+					<div class="item__wrapper">
+						<p class="item__prise">250₽</p>
+						<button id="minus" class="btn btn--modal btn--basket">-</button>
+						<p id="sum" class="item__sum">1</p>
+						<button id="plus" class="btn btn--modal btn--basket">+</button>
+					</div>
+				</div>
+				<div class="ordeer__item">
+					<p class="item__name">Ролл угорь стандартный</p>
+					<div class="item__wrapper">
+						<p class="item__prise">250₽</p>
+						<button id="minus" class="btn btn--modal btn--basket">-</button>
+						<p id="sum" class="item__sum">1</p>
+						<button id="plus" class="btn btn--modal btn--basket">+</button>
+					</div>
+				</div>
+			</div>
+			<div class="basket__footer">
+				<span class="basket__amount">1250₽</span>
+				<div class="basket__btns">
+					<button class="btn btn--modal btn--checkout">Оформить заказ</button>
+					<button class="btn btn--modal btn--canceling">Отмена</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
 	<script src="src/js/modules/header.js"></script>
-	
+	<script src="src/js/modules/modal.js"></script>
     <!-- <script src="js/bundle"></script> -->
 </body>
 </html>
