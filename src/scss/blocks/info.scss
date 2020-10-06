@@ -1,0 +1,25 @@
+.info__wrapper{
+	background-color: #FFF1B8;;
+	background-image: (url(../img/info/bg.png));
+	background-repeat: no-repeat;
+	background-position: right;
+	min-height: 300px;
+	margin-top: 18px;
+	margin-bottom: 56px;
+	color: #302C34;
+}
+.info__text{
+	display: flex;
+	flex-direction: column;
+	max-width: 540px;
+	padding-top: 70px;
+	margin-left: 68px;
+}
+.info__title{
+	font-size: 39px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+.info__descr{
+	font-size: 24px;
+}
