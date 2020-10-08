@@ -10,20 +10,7 @@
 	transition: 0.5s;
 }
 .modal.show{
-	transform: translate(0px, 0px) scale(1);
-	
-}
-.basket__wrapper{
-	position: absolute;
-	display: flex;
-	flex-direction: column;
-	padding: 41px 46px;
-	width: 780px;
-	top: 10%;
-	left: 50%;
-	transition: 2s;
-	transform: translate(-380px, 0px);
-	background-color: white;
+	transform: translate(0px, 0px) scale(1);	
 }
 .basket__order{
 	margin-bottom: 53px;
@@ -33,11 +20,7 @@
 	justify-content: space-between;
 	margin-bottom: 45px;
 }
-.basket__title{
-	font-weight: bold;
-	font-size: 36px;
-}
-.basket__close {
+.basket__close, .private__close{
 	position: absolute;
 	cursor: pointer;
 	right: 46px;

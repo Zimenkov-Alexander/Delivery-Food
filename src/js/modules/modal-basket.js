@@ -5,16 +5,12 @@ function modalBasket (modalSelector, openBtnSelector, ...selectorsClose) {
 		  modal = document.querySelector(modalSelector);
 	
 	if (selectorsClose.length != 0){
-
-		let btnsClose = [];
+		
 		selectorsClose.forEach(item => {
 			const elem = document.querySelector(item);
-			btnsClose.push(elem);
+			elem.addEventListener('click', modalClose);
 		});
 
-		btnsClose.forEach(item => {
-			item.addEventListener('click', modalClose);
-		});
 		window.addEventListener('keydown', (evt) => {
 			if (evt.key === 'Escape') {
 				modalClose();

@@ -191,9 +191,9 @@
 	</footer>
 	
 	<section class="modal modal--basket hide"> 
-		<div class="basket__wrapper">
+		<div class="modal__wrapper wrapper--basket">
 			<div class="basket__info">
-				<h2 class="basket__title">Корзина</h2>
+				<h2 class="modal__title basket__title">Корзина</h2>
 				<button id="modal__close" class="basket__close"></button>
 			</div>
 			<div class="basket__order">
@@ -243,10 +243,26 @@
 			</div>
 		</div>
 	</section>
-
+	<section class="modal modal--private show">
+		<div class="modal__wrapper wrapper--private">
+			<div class="private__info">
+				<h2 class="modal__title private__title">Личный кабинет</h2>
+				<button id="modal__close" class="private__close"></button>
+			</div>
+			<div class="private__date">
+				<input class="login login--email" type="email" placeholder="Ваш Email">
+				<input class="login login--password" type="password" placeholder="Пароль">
+			</div>
+			<div class="private__btns">
+				<button class="btn btn--modal btn--checkout">Войти</button>
+				<button class="btn btn--modal btn--canceling">Отмена</button>
+			</div>
+		</div>
+	</section>
 
 	<script src="src/js/modules/header.js"></script>
 	<script src="src/js/modules/modal-basket.js"></script>
+	<script src="src/js/modules/modal-private.js"></script>
     <!-- <script src="js/bundle"></script> -->
 </body>
 </html>

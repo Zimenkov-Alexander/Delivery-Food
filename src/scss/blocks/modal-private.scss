@@ -1,0 +1,28 @@
+.modal__wrapper.wrapper--private{
+	width: 500px;
+	transform: translate(-250px, 50px);
+}
+
+.modal--private.hide{
+	transform: translate(420px, -405px) scale(0);
+	transition: 0.5s;
+}
+.modal--private.show{
+	transform: translate(0px, 0px) scale(1);	
+}
+.private__date{
+	max-width: 300px;
+	margin: 30px 0;
+}
+.login{
+	background-position: 0px 50%;
+}
+
+.login--email{
+	background-image: url(../img/modal-private/email.svg);
+	margin-bottom: 10px;
+}
+.login--password{
+	background-image: url(../img/modal-private/password.svg);
+}
+
