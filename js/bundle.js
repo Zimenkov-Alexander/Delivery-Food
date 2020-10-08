@@ -95,28 +95,332 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_modules_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/modules/module */ "./src/js/modules/module.js");
+/* harmony import */ var _js_modules_add_order__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/modules/add-order */ "./src/js/modules/add-order.js");
+/* harmony import */ var _js_modules_footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/modules/footer */ "./src/js/modules/footer.js");
+/* harmony import */ var _js_modules_modal_basket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/modules/modal-basket */ "./src/js/modules/modal-basket.js");
+/* harmony import */ var _js_modules_restaurants_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/modules/restaurants-menu */ "./src/js/modules/restaurants-menu.js");
+/* harmony import */ var _js_modules_modal_private__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/modules/modal-private */ "./src/js/modules/modal-private.js");
+// import {modalOpen, modalClose} from './js/modules/modal';
 
 
-console.log(_js_modules_module__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+
+window.addEventListener('DOMContentLoaded', () => {
+
+	Object(_js_modules_add_order__WEBPACK_IMPORTED_MODULE_0__["default"]) ('.btn--in_garbage');
+	Object(_js_modules_modal_basket__WEBPACK_IMPORTED_MODULE_2__["default"]) ('.modal--basket','#basket', '#modal__close', '.btn--canceling');
+	Object(_js_modules_restaurants_menu__WEBPACK_IMPORTED_MODULE_3__["default"]) ('.rest .cards img', '.rest h3');
+	Object(_js_modules_modal_private__WEBPACK_IMPORTED_MODULE_4__["default"]) ('#modal__close', '.private__btns .btn--canceling');
+	Object(_js_modules_footer__WEBPACK_IMPORTED_MODULE_1__["default"]) ();
+
+});
 
 /***/ }),
 
-/***/ "./src/js/modules/module.js":
+/***/ "./src/js/modules/add-order.js":
+/*!*************************************!*\
+  !*** ./src/js/modules/add-order.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function addOrder (btns) {
+	
+	document.querySelectorAll(btns).forEach(btn => {
+		btn.addEventListener('click', ()=> {
+			document.querySelector('.basket__order').innerHTML += `
+			<div class="ordeer__item">
+				<p class="item__name">Ролл угорь стандартный</p>
+				<div class="item__wrapper">
+					<p class="item__prise" data-cost="250">250₽</p>
+					<button id="minus" class="btn btn--modal btn--basket">-</button>
+					<p id="total" class="item__sum" >1</p>
+					<button id="plus" class="btn btn--modal btn--basket">+</button>
+				</div>
+			</div>
+			`;
+		});
+	});
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (addOrder);
+
+/***/ }),
+
+/***/ "./src/js/modules/footer.js":
 /*!**********************************!*\
-  !*** ./src/js/modules/module.js ***!
+  !*** ./src/js/modules/footer.js ***!
   \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modal_joke__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-joke */ "./src/js/modules/modal-joke.js");
 
 
-let template = 'Done';
+function footer () {
+	const links = document.querySelectorAll('.list--nav .list__item');
+	
+	links.forEach(item => {
+		item.addEventListener('click', (evt) => {
+			evt.preventDefault();
+			Object(_modal_joke__WEBPACK_IMPORTED_MODULE_0__["default"]) (item.textContent ,'#modal__close',
+				'[data-cancel]', '.btn--canceling.btn--checkout');
+		});
+	});
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (footer);
+
+/***/ }),
+
+/***/ "./src/js/modules/modal-basket.js":
+/*!****************************************!*\
+  !*** ./src/js/modules/modal-basket.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal */ "./src/js/modules/modal.js");
 
 
-/* harmony default export */ __webpack_exports__["default"] = (template);
+function modalBasket (modalSelector, openBtnSelector, ...selectorsClose) {
+	
+	const modalOpenBtn = document.querySelector(openBtnSelector),
+		  modal = document.querySelector(modalSelector);
+	
+	if (selectorsClose.length != 0){
+		
+		selectorsClose.forEach(item => {
+			const elem = document.querySelector(item);
+			elem.addEventListener('click', () => {
+				Object(_modal__WEBPACK_IMPORTED_MODULE_0__["modalClose"])(modal);
+			});
+		});
+
+		window.addEventListener('keydown', (evt) => {
+			if (evt.key === 'Escape') {
+				Object(_modal__WEBPACK_IMPORTED_MODULE_0__["modalClose"])(modal);
+			}
+		});
+	}
+
+	modalOpenBtn.addEventListener('click', () => {
+		Object(_modal__WEBPACK_IMPORTED_MODULE_0__["modalOpen"])(modal);
+	});
+
+	document.querySelector('.btn--checkout').addEventListener('click', ()=>{
+		alert('Это же тестовый сайт, заказ невозможен:)');
+	});
+	
+	const items = document.querySelectorAll('.item__wrapper'),
+		  basketAmount = document.querySelector('.basket__amount');
+
+	items.forEach(item => {
+		const plus = item.querySelector('#plus'),
+			  minus = item.querySelector('#minus'),
+			  total = item.querySelector('#total'),
+			  prise = item.querySelector('.item__prise'),
+			  cost = prise.dataset.cost;
+			 			  
+		plus.addEventListener('click', () => {
+			changeQuantity(1, total, prise, cost);
+		});
+
+		minus.addEventListener('click', () => {
+			changeQuantity(-1, total, prise, cost);
+		});
+	});
+
+	function changeQuantity (number, total, prise, cost) {
+		total.textContent = +total.textContent + number;
+
+		if(total.textContent <= '0'){
+			total.textContent = 0;
+		}
+		
+		prise.textContent = cost * total.textContent + '₽';
+
+		let summary = 0;
+
+		document.querySelectorAll('.item__prise').forEach(item => {
+			let priseNum = +item.textContent.substring(0, item.textContent.length - 1);
+				summary += priseNum;
+		});
+
+		basketAmount.textContent = summary + '₽';
+	}
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (modalBasket);
+
+/***/ }),
+
+/***/ "./src/js/modules/modal-joke.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/modal-joke.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal */ "./src/js/modules/modal.js");
+
+
+function modalJoke(text ,...selectorsClose) {
+	const modal = document.querySelector('.modal--joke');		  
+
+	if (selectorsClose.length != 0){
+
+		selectorsClose.forEach(item => {
+			const elem = modal.querySelector(item);
+			elem.addEventListener('click', () => {
+				Object(_modal__WEBPACK_IMPORTED_MODULE_0__["modalClose"])(modal);
+			});
+		});
+
+		window.addEventListener('keydown', (evt) => {
+			if (evt.key === 'Escape') {
+				Object(_modal__WEBPACK_IMPORTED_MODULE_0__["modalClose"])(modal);
+			}
+		});
+	}
+
+	modal.classList.remove('hide');
+	modal.classList.add('show');
+	modal.querySelectorAll('[data-name-page]').forEach(item => {
+		item.textContent = text;
+	});
+
+	setTimeout(() => {
+		modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+	}, 1000);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (modalJoke);
+
+/***/ }),
+
+/***/ "./src/js/modules/modal-private.js":
+/*!*****************************************!*\
+  !*** ./src/js/modules/modal-private.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal */ "./src/js/modules/modal.js");
+
+
+function modalPrivate (...selectorsClose) {
+	const modalOpenBtn = document.querySelector('.btn--user'),
+		  modal = document.querySelector('.modal--private');
+		  
+	if (selectorsClose.length != 0){
+
+		selectorsClose.forEach(item => {
+			const elem = modal.querySelector(item);
+			elem.addEventListener('click', () => {
+				Object(_modal__WEBPACK_IMPORTED_MODULE_0__["modalClose"])(modal);
+			});
+		});
+
+		window.addEventListener('keydown', (evt) => {
+			if (evt.key === 'Escape') {
+				Object(_modal__WEBPACK_IMPORTED_MODULE_0__["modalClose"])(modal);
+			}
+		});
+	}
+
+	
+	modalOpenBtn.addEventListener('click', () => {
+		Object(_modal__WEBPACK_IMPORTED_MODULE_0__["modalOpen"])(modal);
+	});
+
+	document.querySelector('.private__btns .btn--checkout').addEventListener('click', ()=>{
+		alert('Это же тестовый сайт, войти невозможено:)');
+	});
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (modalPrivate);
+
+/***/ }),
+
+/***/ "./src/js/modules/modal.js":
+/*!*********************************!*\
+  !*** ./src/js/modules/modal.js ***!
+  \*********************************/
+/*! exports provided: modalOpen, modalClose */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modalOpen", function() { return modalOpen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modalClose", function() { return modalClose; });
+function modalOpen (modal) {
+	modal.classList.remove('hide');
+	modal.classList.add('show');
+	setTimeout(() => {
+		modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+	}, 600);
+}
+function modalClose (modal) {
+	modal.classList.add('hide');
+	modal.classList.remove('show');
+	modal.style.backgroundColor = 'initial';
+}
+
+
+
+/***/ }),
+
+/***/ "./src/js/modules/restaurants-menu.js":
+/*!********************************************!*\
+  !*** ./src/js/modules/restaurants-menu.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function restaurantsMenu (img, title){
+
+	const restaurantsImg = document.querySelectorAll(img),
+		  restaurantsTitle = document.querySelectorAll(title);
+	
+	restaurantsImg.forEach((img, i) => {
+		img.addEventListener('click', ()=> {
+			toрgleMenu(restaurantsTitle[i].textContent);
+		});
+	});
+	restaurantsTitle.forEach(title => {
+		title.addEventListener('click', ()=> {
+			toрgleMenu(title.textContent);
+		});
+	});
+	
+	document.querySelector('.close__menu').addEventListener('click', toрgleMenu);
+
+	function toрgleMenu(menuTitle){
+		window.scrollTo(0,0);
+		document.querySelector('.restaurants').classList.toggle('hide');
+		document.querySelector('.restaurants').classList.toggle('show');
+		document.querySelector('.menu').classList.toggle('hide');
+		document.querySelector('.menu').classList.toggle('show');
+		document.querySelector('.menu__title').textContent = menuTitle;
+	}
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (restaurantsMenu);
 
 /***/ })
 

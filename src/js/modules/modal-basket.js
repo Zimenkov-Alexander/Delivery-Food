@@ -1,3 +1,4 @@
+import {modalOpen, modalClose} from './modal';
 
 function modalBasket (modalSelector, openBtnSelector, ...selectorsClose) {
 	
@@ -8,34 +9,26 @@ function modalBasket (modalSelector, openBtnSelector, ...selectorsClose) {
 		
 		selectorsClose.forEach(item => {
 			const elem = document.querySelector(item);
-			elem.addEventListener('click', modalClose);
+			elem.addEventListener('click', () => {
+				modalClose(modal);
+			});
 		});
 
 		window.addEventListener('keydown', (evt) => {
 			if (evt.key === 'Escape') {
-				modalClose();
+				modalClose(modal);
 			}
 		});
 	}
 
-	modalOpenBtn.addEventListener('click', modalOpen);
-	
-	function modalOpen () {
-		modal.classList.remove('hide');
-		modal.classList.add('show');
-		setTimeout(() => {
-			modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-		}, 600);
-	}
-	function modalClose () {
-		modal.classList.add('hide');
-		modal.classList.remove('show');
-		modal.style.backgroundColor = 'initial';
-	}
+	modalOpenBtn.addEventListener('click', () => {
+		modalOpen(modal);
+	});
 
 	document.querySelector('.btn--checkout').addEventListener('click', ()=>{
 		alert('Это же тестовый сайт, заказ невозможен:)');
 	});
+	
 	const items = document.querySelectorAll('.item__wrapper'),
 		  basketAmount = document.querySelector('.basket__amount');
 
@@ -74,6 +67,5 @@ function modalBasket (modalSelector, openBtnSelector, ...selectorsClose) {
 		basketAmount.textContent = summary + '₽';
 	}
 }
-modalBasket ('.modal--basket','#basket', '#modal__close', '.btn--canceling');
 
-// export default modal;
+export default modalBasket;

@@ -26,6 +26,4 @@ function restaurantsMenu (img, title){
 	}
 }
 
-restaurantsMenu ('.rest .cards img', '.rest h3');
-
-// export default restaurantsMenu;
+export default restaurantsMenu;

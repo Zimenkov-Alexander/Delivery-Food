@@ -1,34 +1,33 @@
-// function modalJoke(text ,...selectorsClose) {
-// 	const modal = document.querySelector('.modal--joke');		  
+import {modalClose} from './modal';
 
-// 	if (selectorsClose.length != 0){
+function modalJoke(text ,...selectorsClose) {
+	const modal = document.querySelector('.modal--joke');		  
 
-// 		selectorsClose.forEach(item => {
-// 			const elem = modal.querySelector(item);
-// 			elem.addEventListener('click', modalClose);
-// 		});
+	if (selectorsClose.length != 0){
 
-// 		window.addEventListener('keydown', (evt) => {
-// 			if (evt.key === 'Escape') {
-// 				modalClose();
-// 			}
-// 		});
-// 	}
+		selectorsClose.forEach(item => {
+			const elem = modal.querySelector(item);
+			elem.addEventListener('click', () => {
+				modalClose(modal);
+			});
+		});
 
-// 	modal.classList.remove('hide');
-// 	modal.classList.add('show');
-// 	modal.querySelectorAll('[data-name-page]').forEach(item => {
-// 		item.textContent = text;
-// 	});
+		window.addEventListener('keydown', (evt) => {
+			if (evt.key === 'Escape') {
+				modalClose(modal);
+			}
+		});
+	}
 
-// 	setTimeout(() => {
-// 		modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-// 	}, 1000);
-// 	function modalClose () {
-// 		modal.classList.add('hide');
-// 		modal.classList.remove('show');
-// 		modal.style.backgroundColor = 'initial';
-// 	}
-// }
+	modal.classList.remove('hide');
+	modal.classList.add('show');
+	modal.querySelectorAll('[data-name-page]').forEach(item => {
+		item.textContent = text;
+	});
 
-// // export default modalJoke;
+	setTimeout(() => {
+		modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+	}, 1000);
+}
+
+export default modalJoke;
