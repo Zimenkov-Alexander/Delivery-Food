@@ -363,6 +363,27 @@ li {
 
 .menu .btn--in_garbage:active {
   background-color: #80c1ff;
+  -webkit-transition: 3s;
+  -o-transition: 3s;
+  transition: 3s;
+}
+
+.menu .btn--in_garbage.plus {
+  position: relative;
+  background-image: none;
+}
+
+.menu .btn--in_garbage.plus::before {
+  position: absolute;
+  content: '+1';
+  font-size: 20px;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  right: 0;
+  -webkit-transform: translate(-6px, 7px);
+  -ms-transform: translate(-6px, 7px);
+  transform: translate(-6px, 7px);
 }
 
 .menu .card__prise {

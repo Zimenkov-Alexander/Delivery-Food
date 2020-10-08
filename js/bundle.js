@@ -100,6 +100,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_modules_modal_basket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/modules/modal-basket */ "./src/js/modules/modal-basket.js");
 /* harmony import */ var _js_modules_restaurants_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/modules/restaurants-menu */ "./src/js/modules/restaurants-menu.js");
 /* harmony import */ var _js_modules_modal_private__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/modules/modal-private */ "./src/js/modules/modal-private.js");
+/* harmony import */ var _js_modules_search_restaurants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/modules/search-restaurants */ "./src/js/modules/search-restaurants.js");
+
 
 
 
@@ -113,7 +115,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	Object(_js_modules_modal_basket__WEBPACK_IMPORTED_MODULE_2__["default"]) ('.modal--basket','#basket', '#modal__close', '.btn--canceling');
 	Object(_js_modules_modal_private__WEBPACK_IMPORTED_MODULE_4__["default"]) ('#modal__close', '.private__btns .btn--canceling');
 	Object(_js_modules_footer__WEBPACK_IMPORTED_MODULE_1__["default"]) ();
-
+	Object(_js_modules_search_restaurants__WEBPACK_IMPORTED_MODULE_5__["default"])();
 });
 
 /***/ }),
@@ -140,6 +142,8 @@ function addOrder (btns) {
 
 		btn.addEventListener('click', ()=> {
 			
+			plusOne(btn);
+
 			createOprder(title, priseNum);
 
 			if (!check){
@@ -189,7 +193,6 @@ function addOrder (btns) {
 			`;
 		}
 	}
-
 	function check (items, title) {
 		let check;
 		items.forEach(item => {
@@ -200,6 +203,12 @@ function addOrder (btns) {
 			}
 		});
 		return check;
+	}
+	function plusOne (btn){
+		btn.classList.add('plus');
+		setTimeout(()=> {
+			btn.classList.remove('plus');
+		},400);
 	}
 
 }
@@ -489,6 +498,43 @@ function restaurantsMenu (img, title){
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (restaurantsMenu);
+
+/***/ }),
+
+/***/ "./src/js/modules/search-restaurants.js":
+/*!**********************************************!*\
+  !*** ./src/js/modules/search-restaurants.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function searchRestaurants () {
+	const input = document.querySelector('.search.search--rest');
+	input.addEventListener('input', ()=> {
+		
+		const cards = document.querySelectorAll('.rest .card');	
+
+		cards.forEach(card => {
+			const title = card.querySelector('.card__title').textContent;
+			
+			let text = input.value,
+				regexp = new RegExp(text, 'g');
+
+			if (regexp.exec(title)) {
+				card.style.display = 'flex';
+			} else{
+				card.style.display = 'none';
+			}
+
+
+
+		});
+	});
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (searchRestaurants);
 
 /***/ })
 

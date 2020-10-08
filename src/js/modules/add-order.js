@@ -10,6 +10,8 @@ function addOrder (btns) {
 
 		btn.addEventListener('click', ()=> {
 			
+			plusOne(btn);
+
 			createOprder(title, priseNum);
 
 			if (!check){
@@ -59,7 +61,6 @@ function addOrder (btns) {
 			`;
 		}
 	}
-
 	function check (items, title) {
 		let check;
 		items.forEach(item => {
@@ -70,6 +71,12 @@ function addOrder (btns) {
 			}
 		});
 		return check;
+	}
+	function plusOne (btn){
+		btn.classList.add('plus');
+		setTimeout(()=> {
+			btn.classList.remove('plus');
+		},400);
 	}
 
 }
