@@ -27,7 +27,7 @@
 			</div>
 		</header>
 		<main class="main container">
-			<div class="restaurants hide">
+			<div class="restaurants show">
 				<section class="info">
 					<div class="info__wrapper">
 						<div class="info__text">
@@ -157,7 +157,7 @@
 					</div>
 				</section>
 			</div>
-			<div class="menu show">
+			<div class="menu hide">
 				<section class="menu">
 					<div class="menu__wrapper">
 						<div class="menu__info">
@@ -185,7 +185,7 @@
 									</div>
 									<div class="card__info">
 										<button class="btn btn--in_garbage">В корзину</button>
-										<p class="card__prise"> 250 ₽</p>
+										<p class="card__prise">250₽</p>
 									</div>
 								</div>
 							</article>
@@ -195,14 +195,14 @@
 								</div>
 								<div class="card__wrapper">
 									<div class="card__name">
-										<h3 class="card__title">Ролл угорь стандарт</h3>
+										<h3 class="card__title">Калифорния лосось стандарт</h3>
 										<p class="card__ingredients">
-											Рис, угорь, соус унаги, кунжут, водоросли нори.
+											Рис, лосось, авокадо, огурец, майонез, икра масаго, водоросли нори.
 										</p>
 									</div>
 									<div class="card__info">
 										<button class="btn btn--in_garbage">В корзину</button>
-										<p class="card__prise"> 250 ₽</p>
+										<p class="card__prise">395₽</p>
 									</div>
 								</div>
 							</article>
@@ -212,14 +212,14 @@
 								</div>
 								<div class="card__wrapper">
 									<div class="card__name">
-										<h3 class="card__title">Ролл угорь стандарт</h3>
+										<h3 class="card__title">Окинава стандарт</h3>
 										<p class="card__ingredients">
-											Рис, угорь, соус унаги, кунжут, водоросли нори.
+											Рис, креветка отварная, сыр сливочный, лосось, огурец свежий...
 										</p>
 									</div>
 									<div class="card__info">
 										<button class="btn btn--in_garbage">В корзину</button>
-										<p class="card__prise"> 250 ₽</p>
+										<p class="card__prise">300₽</p>
 									</div>
 								</div>
 							</article>
@@ -229,14 +229,14 @@
 								</div>
 								<div class="card__wrapper">
 									<div class="card__name">
-										<h3 class="card__title">Ролл угорь стандарт</h3>
+										<h3 class="card__title">Цезарь маки хl</h3>
 										<p class="card__ingredients">
-											Рис, угорь, соус унаги, кунжут, водоросли нори.
+											Рис, куриная грудка копченая, икра масаго, томат, айсберг, соус цезарь...
 										</p>
 									</div>
 									<div class="card__info">
 										<button class="btn btn--in_garbage">В корзину</button>
-										<p class="card__prise"> 250 ₽</p>
+										<p class="card__prise">350₽</p>
 									</div>
 								</div>
 							</article>
@@ -246,14 +246,14 @@
 								</div>
 								<div class="card__wrapper">
 									<div class="card__name">
-										<h3 class="card__title">Ролл угорь стандарт</h3>
+										<h3 class="card__title">Ясай маки стандарт</h3>
 										<p class="card__ingredients">
-											Рис, угорь, соус унаги, кунжут, водоросли нори.
+											Рис, помидор свежий, перец болгарский, авокадо, огурец, айсберг
 										</p>
 									</div>
 									<div class="card__info">
 										<button class="btn btn--in_garbage">В корзину</button>
-										<p class="card__prise"> 250 ₽</p>
+										<p class="card__prise">270₽</p>
 									</div>
 								</div>
 							</article>
@@ -263,14 +263,14 @@
 								</div>
 								<div class="card__wrapper">
 									<div class="card__name">
-										<h3 class="card__title">Ролл угорь стандарт</h3>
+										<h3 class="card__title">Ролл с креветкой стандарт</h3>
 										<p class="card__ingredients">
-											Рис, угорь, соус унаги, кунжут, водоросли нори.
+											Рис, водоросли нори, креветки отварные, сыр сливочный, огурцы
 										</p>
 									</div>
 									<div class="card__info">
 										<button class="btn btn--in_garbage">В корзину</button>
-										<p class="card__prise"> 250 ₽</p>
+										<p class="card__prise">550₽</p>
 									</div>
 								</div>
 							</article>
@@ -320,45 +320,10 @@
 				<button id="modal__close" class="basket__close"></button>
 			</div>
 			<div class="basket__order">
-				<div class="ordeer__item">
-					<p class="item__name">Ролл угорь стандартный</p>
-					<div class="item__wrapper">
-						<p class="item__prise" data-cost="250">250₽</p>
-						<button id="minus" class="btn btn--modal btn--basket">-</button>
-						<p id="total" class="item__sum" >1</p>
-						<button id="plus" class="btn btn--modal btn--basket">+</button>
-					</div>
-				</div>
-				<div class="ordeer__item">
-					<p class="item__name">Ролл угорь вообще не стандартный</p>
-					<div class="item__wrapper">
-						<p class="item__prise" data-cost="500">0₽</p>
-						<button id="minus" class="btn btn--modal btn--basket">-</button>
-						<p id="total" class="item__sum">0</p>
-						<button id="plus" class="btn btn--modal btn--basket">+</button>
-					</div>
-				</div>
-				<div class="ordeer__item">
-					<p class="item__name">Ролл угорь мини-стандарт</p>
-					<div class="item__wrapper">
-						<p class="item__prise" data-cost="200">0₽</p>
-						<button id="minus" class="btn btn--modal btn--basket">-</button>
-						<p id="total" class="item__sum">0</p>
-						<button id="plus" class="btn btn--modal btn--basket">+</button>
-					</div>
-				</div>
-				<div class="ordeer__item">
-					<p class="item__name">Ролл угорь не совсем стандартный</p>
-					<div class="item__wrapper">
-						<p class="item__prise" data-cost="300">0₽</p>
-						<button id="minus" class="btn btn--modal btn--basket">-</button>
-						<p id="total" class="item__sum">0</p>
-						<button id="plus" class="btn btn--modal btn--basket">+</button>
-					</div>
-				</div>
+				<p class="order__text">Вы ещё ничего не добавили в корзину.</p>
 			</div>
 			<div class="basket__footer">
-				<span class="basket__amount">250₽</span>
+				<span class="basket__amount">0₽</span>
 				<div class="basket__btns">
 					<button class="btn btn--modal btn--checkout">Оформить заказ</button>
 					<button class="btn btn--modal btn--canceling">Отмена</button>
@@ -389,7 +354,7 @@
 				<button id="modal__close" class="private__close"></button>
 			</div>
 			<div class="joke__date">
-				Тут будет страница <span data-name-page>"Название ссылки"</span>
+				Это страница <span data-name-page>"Название ссылки"</span>
 			</div>
 			<div class="joke__btns">
 				<button class="btn btn--modal btn--canceling btn--checkout">Ок</button>

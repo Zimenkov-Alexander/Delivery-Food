@@ -88,6 +88,11 @@ li {
   outline-color: #4da9ff;
 }
 
+.btn--modal:disabled {
+  background-color: silver;
+  cursor: default;
+}
+
 .search, .login {
   background-color: white;
   border: 1px solid #d9d9d9;
@@ -324,7 +329,6 @@ li {
 .menu .card__ingredients {
   font-size: 18px;
   line-height: 21px;
-  max-width: 240px;
   margin-bottom: 25px;
   color: #8C8C8C;
 }
@@ -596,6 +600,11 @@ li {
 
 .basket__order {
   margin-bottom: 53px;
+}
+
+.order__text {
+  font-size: 20px;
+  margin-left: 2px;
 }
 
 .basket__info {

@@ -100,7 +100,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_modules_modal_basket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/modules/modal-basket */ "./src/js/modules/modal-basket.js");
 /* harmony import */ var _js_modules_restaurants_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/modules/restaurants-menu */ "./src/js/modules/restaurants-menu.js");
 /* harmony import */ var _js_modules_modal_private__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/modules/modal-private */ "./src/js/modules/modal-private.js");
-// import {modalOpen, modalClose} from './js/modules/modal';
 
 
 
@@ -110,8 +109,8 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener('DOMContentLoaded', () => {
 
 	Object(_js_modules_add_order__WEBPACK_IMPORTED_MODULE_0__["default"]) ('.btn--in_garbage');
-	Object(_js_modules_modal_basket__WEBPACK_IMPORTED_MODULE_2__["default"]) ('.modal--basket','#basket', '#modal__close', '.btn--canceling');
 	Object(_js_modules_restaurants_menu__WEBPACK_IMPORTED_MODULE_3__["default"]) ('.rest .cards img', '.rest h3');
+	Object(_js_modules_modal_basket__WEBPACK_IMPORTED_MODULE_2__["default"]) ('.modal--basket','#basket', '#modal__close', '.btn--canceling');
 	Object(_js_modules_modal_private__WEBPACK_IMPORTED_MODULE_4__["default"]) ('#modal__close', '.private__btns .btn--canceling');
 	Object(_js_modules_footer__WEBPACK_IMPORTED_MODULE_1__["default"]) ();
 
@@ -128,23 +127,81 @@ window.addEventListener('DOMContentLoaded', () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modal_basket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-basket */ "./src/js/modules/modal-basket.js");
+
+
 function addOrder (btns) {
-	
-	document.querySelectorAll(btns).forEach(btn => {
+	document.querySelectorAll(btns).forEach((btn, i) => {
+		let check = false;
+		
+		const title = document.querySelectorAll('.menu h3')[i].textContent,
+			  prise = document.querySelectorAll('.menu .card__info .card__prise')[i].textContent,
+			  priseNum = +prise.substring(0, prise.length - 1);
+
 		btn.addEventListener('click', ()=> {
-			document.querySelector('.basket__order').innerHTML += `
+			
+			createOprder(title, priseNum);
+
+			if (!check){
+				Object(_modal_basket__WEBPACK_IMPORTED_MODULE_0__["default"]) ('.modal--basket','#basket', '#modal__close', '.btn--canceling');
+			}
+			check = true;
+		});
+	});
+	
+	function createOprder (title, prise){
+		const itemTitle = document.querySelectorAll('.item__name');
+
+		if (itemTitle.length === 0){
+			document.querySelector('.basket__order').innerHTML = `
 			<div class="ordeer__item">
-				<p class="item__name">Ролл угорь стандартный</p>
+				<p class="item__name">${title}</p>
 				<div class="item__wrapper">
-					<p class="item__prise" data-cost="250">250₽</p>
+					<p class="item__prise" data-cost="${prise}">${prise}₽</p>
 					<button id="minus" class="btn btn--modal btn--basket">-</button>
 					<p id="total" class="item__sum" >1</p>
 					<button id="plus" class="btn btn--modal btn--basket">+</button>
 				</div>
 			</div>
 			`;
+		} else if (check(itemTitle, title)) {
+			document.querySelectorAll('.ordeer__item').forEach(item => {
+				if (item.querySelector('.item__name').textContent == title){
+					let sum = +item.querySelector('.item__sum').textContent;
+					sum += 1;
+					item.querySelector('.item__sum').textContent = sum;
+
+					let prise = item.querySelector('[data-cost]').attributes['data-cost'].value;
+					item.querySelector('.item__prise').textContent = prise * sum +'₽';
+				}
+			});
+		} else{
+			document.querySelector('.basket__order').innerHTML += `
+			<div class="ordeer__item">
+				<p class="item__name">${title}</p>
+				<div class="item__wrapper">
+					<p class="item__prise" data-cost="${prise}">${prise}₽</p>
+					<button id="minus" class="btn btn--modal btn--basket">-</button>
+					<p id="total" class="item__sum" >1</p>
+					<button id="plus" class="btn btn--modal btn--basket">+</button>
+				</div>
+			</div>
+			`;
+		}
+	}
+
+	function check (items, title) {
+		let check;
+		items.forEach(item => {
+			if (item.textContent === title){
+				check = true ;
+			} else{
+				check = false;
+			}
 		});
-	});
+		return check;
+	}
+
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (addOrder);
@@ -216,28 +273,39 @@ function modalBasket (modalSelector, openBtnSelector, ...selectorsClose) {
 		Object(_modal__WEBPACK_IMPORTED_MODULE_0__["modalOpen"])(modal);
 	});
 
-	document.querySelector('.btn--checkout').addEventListener('click', ()=>{
+	const btnCheckout = document.querySelector('.btn--checkout');
+
+	btnCheckout.addEventListener('click', ()=>{
 		alert('Это же тестовый сайт, заказ невозможен:)');
 	});
 	
 	const items = document.querySelectorAll('.item__wrapper'),
 		  basketAmount = document.querySelector('.basket__amount');
+	if (items){
+		items.forEach(item => {
 
-	items.forEach(item => {
-		const plus = item.querySelector('#plus'),
-			  minus = item.querySelector('#minus'),
-			  total = item.querySelector('#total'),
-			  prise = item.querySelector('.item__prise'),
-			  cost = prise.dataset.cost;
-			 			  
-		plus.addEventListener('click', () => {
-			changeQuantity(1, total, prise, cost);
-		});
+			const plus = item.querySelector('#plus'),
+				  minus = item.querySelector('#minus'),
+				  total = item.querySelector('#total'),
+				  prise = item.querySelector('.item__prise'),
+				  cost = prise.dataset.cost;
+				  
 
-		minus.addEventListener('click', () => {
-			changeQuantity(-1, total, prise, cost);
+				plus.addEventListener('click', () => {
+					changeQuantity(1, total, prise, cost);
+				});
+		
+				minus.addEventListener('click', () => {
+					changeQuantity(-1, total, prise, cost);
+				});	  
 		});
-	});
+	}
+
+	if (document.querySelector('.order__text')){
+		btnCheckout.setAttribute('disabled','disabled');
+	} else {
+		btnCheckout.removeAttribute('disabled');
+	}
 
 	function changeQuantity (number, total, prise, cost) {
 		total.textContent = +total.textContent + number;

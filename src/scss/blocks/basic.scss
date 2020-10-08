@@ -59,6 +59,10 @@ li{
 	&:focus{
 		outline-color: hsl(209, 100%, 65%);
 	}
+	&:disabled{
+		background-color: rgb(192, 192, 192);
+		cursor: default;
+	}
 }
 .search, .login{
 	background-color: white;
