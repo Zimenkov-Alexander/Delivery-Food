@@ -113,3 +113,10 @@
 		outline-color:hsl(0, 0%, 55%);
 	}
 }
+
+@media (min-width: 2400px){
+	.modal.hide{
+		transform: translate(510px, -585px) scale(0);
+		transition: 0.5s;
+	}
+}

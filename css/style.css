@@ -236,6 +236,10 @@ li {
   font-size: 24px;
 }
 
+.restaurants.hide {
+  display: none;
+}
+
 .rest__info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -259,13 +263,117 @@ li {
   background-image: url(../img/rest/search.svg);
 }
 
+.menu.hide {
+  display: none;
+}
+
+.menu .menu__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.menu .info__list {
+  margin-left: 25px;
+  margin-top: 30px;
+}
+
+.menu .menu__title {
+  margin-left: 0px;
+  font-size: 36px;
+}
+
+.menu .close__menu {
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+  background-image: url(../img/menu/back.svg);
+  background-position: center 2px;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+}
+
+.menu .card__name {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.menu .card__title {
+  font-size: 24px;
+  font-weight: normal;
+  width: 100%;
+  margin-bottom: 10px;
+  cursor: default;
+}
+
+.menu .card__title:hover {
+  padding-bottom: 0px;
+  border-bottom: none;
+}
+
+.menu .card__ingredients {
+  font-size: 18px;
+  line-height: 21px;
+  max-width: 240px;
+  margin-bottom: 25px;
+  color: #8C8C8C;
+}
+
+.menu .card__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.menu .card__image {
+  cursor: default;
+}
+
+.menu .btn--in_garbage {
+  color: white;
+  background-color: #1890FF;
+  padding-left: 16px;
+  padding-right: 35px;
+  background-image: url(../img/menu/icon-container.svg);
+  background-position: 90% 50%;
+}
+
+.menu .btn--in_garbage:hover {
+  background-color: #4da9ff;
+  color: white;
+}
+
+.menu .btn--in_garbage:active {
+  background-color: #80c1ff;
+}
+
+.menu .card__prise {
+  margin-left: 32px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .cards {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  margin: 0 auto;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-bottom: 60px;
@@ -281,6 +389,7 @@ li {
   flex-direction: column;
   width: 384px;
   min-height: 380px;
+  border-radius: 7px;
   background-color: white;
   margin-bottom: 30px;
 }
@@ -634,6 +743,17 @@ li {
   outline-color: #8c8c8c;
 }
 
+@media (min-width: 2400px) {
+  .modal.hide {
+    -webkit-transform: translate(510px, -585px) scale(0);
+    -ms-transform: translate(510px, -585px) scale(0);
+    transform: translate(510px, -585px) scale(0);
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
 .modal__wrapper.wrapper--private {
   width: 500px;
   -webkit-transform: translate(-250px, 50px);
@@ -672,4 +792,50 @@ li {
 
 .login--password {
   background-image: url(../img/modal-private/password.svg);
+}
+
+@media (min-width: 2400px) {
+  .modal--private.hide {
+    -webkit-transform: translate(420px, -585px) scale(0);
+    -ms-transform: translate(420px, -585px) scale(0);
+    transform: translate(420px, -585px) scale(0);
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+  }
+}
+
+.modal__wrapper.wrapper--joke {
+  width: 600px;
+}
+
+.joke__date {
+  margin: 40px 0px 80px;
+  font-size: 20px;
+}
+
+.btn--canceling.btn--checkout {
+  color: white;
+}
+
+.modal__wrapper.wrapper--joke {
+  width: 500px;
+  -webkit-transform: translate(-250px, 50px);
+  -ms-transform: translate(-250px, 50px);
+  transform: translate(-250px, 50px);
+}
+
+.modal--joke.hide {
+  -webkit-transform: translate(0, 100%) scale(0);
+  -ms-transform: translate(0, 100%) scale(0);
+  transform: translate(0, 100%) scale(0);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.modal--joke.show {
+  -webkit-transform: translate(0px, 0px) scale(1);
+  -ms-transform: translate(0px, 0px) scale(1);
+  transform: translate(0px, 0px) scale(1);
 }

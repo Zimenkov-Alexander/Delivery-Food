@@ -1,9 +1,16 @@
+.cards{
+	display: flex;
+	justify-content: space-around;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	margin-bottom: 60px;
+}
 .card{
 	display: flex;
 	flex-direction: column;
 	width: 384px;
 	min-height: 380px;
-
+	border-radius: 7px;
 	background-color: white;
 	margin-bottom: 30px;
 }

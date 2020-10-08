@@ -1,0 +1,23 @@
+.modal__wrapper.wrapper--joke{
+	width: 600px;
+}
+.joke__date{
+	margin: 40px 0px 80px;
+	font-size: 20px;
+}
+.btn--canceling.btn--checkout{
+	color: white;
+}
+
+.modal__wrapper.wrapper--joke{
+	width: 500px;
+	transform: translate(-250px, 50px);
+}
+
+.modal--joke.hide{
+	transform: translate(0, 100%) scale(0);
+	transition: 0.5s;
+}
+.modal--joke.show{
+	transform: translate(0px, 0px) scale(1);	
+}

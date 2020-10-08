@@ -1,3 +1,6 @@
+.restaurants.hide{
+	display: none;
+}
 .rest__info{
 	display: flex;
 	justify-content: space-between;
@@ -12,10 +15,4 @@
 }
 .search--rest{
 	background-image: (url(../img/rest/search.svg));
-}
-.cards{
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	margin-bottom: 60px;
 }
