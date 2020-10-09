@@ -47,4 +47,29 @@
 		}
 	}
 }
-
+@media (max-width: $tablet-width){
+	.header__search{
+		width: 50%;
+	}
+}
+@media (max-width: $mobile-width){
+	.header__search{
+		width: 40%;
+	}
+}
+@media (max-width: 620px){
+	.header__wrapeer{
+		flex-wrap: wrap;
+	}
+	.header__search{
+		display: none;
+	}
+	.btns--header{
+		display: flex;
+		flex-direction: column;
+		width: 120px;
+		.btn--user{
+			margin-bottom: 10px;
+		}
+	}
+}

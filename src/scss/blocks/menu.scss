@@ -87,11 +87,39 @@
 			transform: translate(-6px, 7px);			
 		}
 	}
-
-
 	.card__prise{
 		margin-left: 32px;
 		font-weight: bold;
 		font-size: 20px;
+	}
+}
+@media (max-width: $tablet-width){
+	.menu{
+		.card--menu{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+		}
+	}
+}
+@media (max-width: 550px){
+	.menu__info{
+
+		justify-content: space-around;
+		.menu__title{
+			min-width: 40%;
+			font-size: 32px;
+		}
+		.info__list{
+			margin-left: 0;
+			padding-left: 0;
+			flex-direction: column;
+			.info__item{
+				font-size: 0.9em;
+			}
+		}
+		.item--rating{
+			margin-left: 30px;
+		}
 	}
 }

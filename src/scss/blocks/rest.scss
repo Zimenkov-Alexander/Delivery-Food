@@ -16,3 +16,13 @@
 .search--rest{
 	background-image: (url(../img/rest/search.svg));
 }
+
+@media (max-width: $mobile-width){
+	.rest__title{
+		font-size: 32px;
+		margin-bottom: 10px;
+	}
+	.rest__info{
+		flex-wrap: wrap;
+	}
+}

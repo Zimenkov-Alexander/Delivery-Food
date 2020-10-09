@@ -93,3 +93,63 @@ li{
 	font-weight: bold;
 	font-size: 36px;
 }
+
+@media (max-width: $tablet-width){
+	body{
+		margin: 0;
+		padding: 0;
+	}
+	.wrapper{
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		width: 100%;
+		max-width: 100%;
+		min-width: 0px;
+		margin: 0;
+	}
+	.container{
+		width: 100%;
+		padding: 0 20px;
+	}
+}
+@media (max-width: $mobile-width){
+	.btn{
+		font-size: 14px;
+		min-height: 25px;
+	}
+	.modal__wrapper{
+		width: 100%;
+		transform: translate(-50%, 0px);
+	}
+}
+
+@media (max-width: 500px){
+	.modal__wrapper.wrapper--private.modal--mobile,
+	.modal__wrapper.wrapper--joke.modal--mobile   {
+		padding: 41px 46px;
+		width: 90%;
+		top: 10%;
+		left: 0;
+		transform: translate(20px, 0px);
+		background-color: white;
+	}
+	.modal__wrapper.wrapper--basket.modal--mobile {
+		.basket__btns{
+			margin-top: 0px;
+			margin-left: 20px;
+		}
+		.btn--canceling, .btn--checkout{
+			width: 100%;
+			max-width: 200px;
+		}
+		.btn--canceling{
+			margin-top: 10px;
+		}
+	}
+	.item__wrapper{
+		.item__sum{
+			margin: 0 7px;
+		}
+	}
+}

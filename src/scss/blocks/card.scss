@@ -104,3 +104,58 @@
 		background-color:#8C8C8C;
 	}
 }
+@media (max-width: $tablet-width){
+	.cards{
+		margin-bottom: 0px;
+	}
+	.card{
+		width: 45%;
+		min-height: 340px;
+		margin-bottom: 30px;
+	}
+	.card__wrapper{
+		width: 100%;
+		padding: 0 20px;
+	}
+	.card__name{
+		flex-wrap: wrap;
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: $mobile-width){
+	.card{
+		width: 45%;
+		min-height: 310px;
+		margin-bottom: 30px;
+	}
+	.card__wrapper{
+		width: 100%;
+		padding: 0 20px;
+	}
+	.info__list{
+		display: flex;
+		justify-content: space-between;
+		padding-left: 0px;
+		flex-wrap: wrap;
+	}
+}
+@media (max-width: 500px){
+	.card{
+		width: 100%;
+		min-height: 310px;
+		padding-bottom: 20px;
+		margin-bottom: 30px;
+	}
+	.info__list{
+		padding-left: 20px;
+	}
+	.info__item{
+		margin: 0 10px;
+	}
+	.item--food{
+		&::before{
+			content: none;
+		}
+	}
+}
